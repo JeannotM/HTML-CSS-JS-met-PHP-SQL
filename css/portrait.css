@@ -1,0 +1,167 @@
+@media all and (max-width: 680px) {
+    /* Nav */
+    #navbgklein{
+        background-color:#45d002;
+        width:100%;
+        height:39px;
+    }
+    nav #hamburger{
+        position:absolute;
+        display:block;
+        margin:6px;
+        width:24px;
+        height:24px;
+        cursor:pointer;
+        left:0;
+        color:#fff;
+    }
+    div#centerednav{
+        display:block;
+        overflow:hidden;
+        background-color:#45d002;
+    }
+    div#centerednav a, div#centerednav p{
+        display:block;
+        padding-bottom:1px;
+    }
+    /* eind Nav */
+    /* Over Ons */
+    #overons p{
+        float:none;
+        text-align:center;
+        font-size:20px;
+        padding:0 5%;
+        width:100%;
+    }
+    #overons img{
+        float:none;
+        width:65%;
+        display:block;
+        padding:0;
+        padding-bottom:10px;
+        margin:0 auto;
+    }
+    /* eind Over Ons */
+    /* portfolio */
+    #portfolio div#slider{
+        min-width:320px;
+        min-height:180px;
+    }
+    #portfolio div#slider h1{
+        font-size:20px;
+    }
+    #portfolio #slider p#l, #portfolio #slider p#r{
+        margin-top:65px;
+        padding:8px 10px;
+        padding-bottom:10px;
+    }
+    /* eind Portfolio */
+    /* Vacature */
+    form{
+        text-align:center;
+    }
+    div#centeredform{
+        width:80%;
+        margin:0 auto;
+        float:none;
+        position:relative;
+        text-align:left;
+    }
+    div#kalender{
+        margin:0 auto;
+        float:none;
+        width:360px;
+        height:360px;
+    }
+    div#rechtsform{
+        display:block;
+        float:none;
+        margin:auto;
+        width:100%;
+    }
+    /* eind Vacature */
+    #overons.open, #portfolio.open, #contact.open, #vacature.open{
+        overflow:auto;
+        padding-bottom:20px;
+    }
+    /* Animaties */
+    .openmenu{
+        display:block;
+        position:absolute;
+        height:190px;
+        width:100%;
+        animation-name:openmenu;
+        animation-duration:0.5s;
+        transition-timing-function: ease-in;
+        -webkit-animation-name:openmenu;
+        -webkit-animation-duration:0.5s;
+        -webkit-transition-timing-function: ease-in;
+        border-bottom:1px solid #199a02;;
+    }
+    .sluitmenu{
+        height:0;
+        width:100%;
+        position:absolute;
+        animation-name:sluitmenu;
+        animation-duration:0.5s;
+        transition-timing-function: ease-out;
+        -webkit-animation-name:sluitmenu;
+        -webkit-animation-duration:0.5s;
+        -webkit-transition-timing-function: ease-out;
+    }
+    .coolon{
+        transform: rotate(90deg);
+        animation-name:coolon;
+        animation-duration:0.5s;
+        transition-timing-function: ease-in;
+        -webkit-transform: rotate(90deg);
+        -webkit-animation-name:coolon;
+        -webkit-animation-duration:0.5s;
+        -webkit-transition-timing-function: ease-in;
+    }
+    .cooloff{
+        transform: rotate(0deg);
+        animation-name:cooloff;
+        animation-duration:0.5s;
+        transition-timing-function: ease-out;
+        -webkit-transform: rotate(0deg);
+        -webkit-animation-name:cooloff;
+        -webkit-animation-duration:0.5s;
+        -webkit-transition-timing-function: ease-out;
+    }
+    @keyframes coolon{
+        0% {transform: rotate(0deg)}
+        100% {transform: rotate(90deg)}
+    }
+    @-webkit-keyframes coolon{
+        0% {transform:rotate(0deg);}
+        100% {transform:rotate(90deg);}
+    }
+
+    @keyframes cooloff{
+        0% {transform:rotate(-90deg);}
+        100% {transform:rotate(0deg);}
+    }
+    @-webkit-keyframes cooloff{
+        0% {transform:rotate(-90deg);}
+        100% {transform:rotate(0deg);}
+    }
+
+    @keyframes openmenu{
+        0% {height:0;}
+        100% {height:190px;}
+    }
+    @-webkit-keyframes openmenu{
+        0% {height:0;}
+        100% {height:190px;}
+    }
+
+    @keyframes sluitmenu{
+        0% {height:190px;}
+        100% {height:0;}
+    }
+    @-webkit-keyframes sluitmenu{
+        0% {height:190px;}
+        100% {height:0;}
+    }
+}

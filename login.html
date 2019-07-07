@@ -1,0 +1,75 @@
+<htmL>
+<body>
+<p>
+function writeLog($conn,$msg){<br>
+    echo "writeLog -".$msg;<br>
+    try{<br>
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])) {<br>
+            $ip = $_SERVER['HTTP_CLIENT_IP'];<br>
+        }else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {<br>
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];<br>
+        }else{<br>
+            $ip = $_SERVER['REMOTE_ADDR'];<br>
+        }<br>
+        $sql=$conn->prepare("INSERT INTO logs (ip, event) VALUES (:ip, :msg)");<br>
+        $sql->bindParam(":ip", $ip, PDO::PARAM_STR, 30);<br>
+        $sql->bindParam(":msg", $msg, PDO::PARAM_STR, 50);<br>
+        $sql->execute();<br>
+    } catch(PDOException $e) {<br>
+        $conn->rollBack();<br>
+        echo $e->getMessage();<br>
+    }<br>
+}<br><br>
+function melden($conn,$msg){<br>
+    session_destroy();<br>
+    setcookie('error', $msg, time()+15);<br>
+    writeLog($conn, $msg);<br>
+    $conn=null;<br>
+    header('location: login.php');<br>
+    exit();<br>
+}<br>
+<br>
+session_start();<br><br>
+if(!isset($_POST['submit'])){<br>
+    melden($conn, "Geen submit aanwezig");<br>
+}else{<br>
+    if(!isset($_POST['nocsrf'])){<br>
+        melden($conn, "Geen CSRF aanwezig");<br>
+    }else if($_POST['nocsrf']!=$_SESSION['token']){<br>
+        melden($conn, "de POST en SESSIE CSRF is niet gelijk aan elkaar");<br>
+    }else{<br>
+        try {<br>
+            $stmt = $conn->prepare("SELECT naam, pass FROM Hijko");<br>
+            $stmt->execute();<br>
+            $ok=$stmt->fetchAll();<br>
+        }<br>
+        catch(PDOException $e) {<br>
+            echo "Error: " . $e->getMessage();<br>
+        }<br>
+        $diftime=15;<br>
+        foreach($ok as $ja){};<br>
+        if(is_file("locked.txt")){<br>
+            $diftime=time()-intval(file_get_contents("locked.txt"));<br>
+        }<br>
+        if($diftime<15){<br>
+            melden($conn,"Te kort geleden fout ingelogd");<br>
+        }else{<br>
+            if(password_verify($_POST["login"], $ja['naam'])==TRUE && //password_verify($_POST["password"], $ja['pass'])==TRUE){ <br>
+                writeLog($conn, "Juiste inlog gegevens");<br>
+                $_SESSION['naam']=$_POST['login'];<br>
+                $_SESSION['token']=$_POST['nocsrf'];<br>
+                setcookie('naam', $_POST['login'], time() + 15);<br>
+                setcookie('token', $_POST['nocsrf'], time() + 15);<br>
+                header('Location: data.php');<br>
+                $conn=null;<br>
+            }else{<br>
+                file_put_contents("locked.txt",time());<br>
+                melden($conn, 'Foute inlog gegevens');<br>
+                $conn=null;<br>
+            }
+        }
+    }
+}
+</body>
+</p>
+</htmL>

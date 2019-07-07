@@ -1,0 +1,95 @@
+<html lang='nl'>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/portrait.css">
+        <link rel="stylesheet" type="text/css" href="css/landscape.css">
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Description" content="Bouw uw droomkeukens met Hijko de Wit.">
+        <title>Simpele PHP</title>
+    </head>
+    <div class="foreground"></div>
+    <body>
+        <header>
+            <h2 class="home1" onclick="switchpage(this.className)">Meer uitleg</h2>
+            <div id="BG">
+                <div class="KleurOpBG"></div>
+                <img src="https://source.unsplash.com/random/1920x1080" alt="Plaatje op de achtergrond">
+            </div>
+        </header>
+        <nav>
+        <img onclick="hamburger()" id="hamburger" src="img/bars-solid.svg" alt="Hamburger menu">
+        <div id="navbgklein"></div>
+            <div id="centerednav" class="sluitmenu">
+                <a onclick="switchpage(this.className)" class="home"><p>Home</p></a>
+                <a onclick="switchpage(this.className)" class="login"><p>Login pagina</p></a>
+                <a onclick="switchpage(this.className)" class="werkendekalender"><p>Kalender</p></a>
+            </div>
+        </nav>
+        <article id="login" class="weg">
+            <h1>Admin Panelish</h1>
+            <p>Het bedrijf waar ik de site voor mag maken heeft ook een Admin panel waarin die bijna alles op de site kan veranderen.<br>
+                Er is maar 1 account aanwezig op de site, dus heb ik niet super ingewikkeld gedaan met het inloggen.<br>
+                De login pagina bevatte een CSRF code en is beveiligd tegen SQL injecties en XSS aanvallen.<br>
+                Als je iets fout typte of deed werdt dit doorgestuurd naar de database met daarnaast een timestamp als simpele bruteforce beveiliging<br>
+                De tijd wordt ook gepost in een txt bestand en dan moet je 15 seconden wachten voordat je weer kan inloggen.<br>
+            </p><br>
+            <div>
+                <form action="login.html" method="POST">
+                    <p>Naam:</p><input type="text" name="login" autocomplete="off"><br>
+                    <p>Wachtwoord:</p><input type="password" name="password" autocomplete="off"><br>
+                    <input type="submit" style="padding:2px;" name="submit" value="Check" autocomplete="off">
+                    <input type="hidden" name="nocsrf" value="<?php echo $_SESSION['token']?>">
+                </form>
+            </div>
+        </article>
+        <article id="werkendekalender" class="weg">
+            <h1>Werkende Kalender</h1>
+            <p>De kalender die je hier ziet was gecodeerd voor het andere bedrijf waar ik het over had in de mail.<br>
+                met PHP en SQL bevat deze kalender 5 verschillende dagen met verschillende kenmerken (niet al te grote).<br>
+                Je kan niet verder dan 6 maanden en ook niet verder terug dan de maand waarin de computer (of database) zich bevind.<br>
+                Je kan zelfs op de blokken klikken die je in de kalender ziet.</p><br>
+            <div id="centeredform">
+            <form action="" method="get">
+                <p>Voornaam: </p><input type="text" placeholder="Voornaam" label="Voornaam" name="voornaam" maxlength="30" required>
+                <p>Achternaam: </p><input type="text" placeholder="Achternaam" label="Achternaam" name="achternaam" maxlength="30" required>
+                <p>E-Mail Adres: </p><input type="email" placeholder="Mail-Adres" label="Mail-Adres" name="mail" maxlength="60" required>
+                <p>Telefoonnummer: </p><input type="number" placeholder="Telefoon nummer" label="Telefoon nummer" name="nummer" maxlength="20" required>
+                <p>Order-nummer: </p><input type="text" placeholder="Order nummer" label="Order nummer" name="ordernummer" maxlength="20" required><br>
+                <div id="normaledag">
+                    <p>Betreft:</p>
+                    <select id="dagtijd" name="dagtijd" style="font-size:15px;width:194px;margin-bottom:5px;">
+                        <option onclick="tijdform('700')">Keuken plaatsen</option>
+                        <option onclick="tijdform('1700')">De keuken inmeten</option>
+                    </select><br>
+                </div>
+                <input type="text" id="value" placeholder="Klik op uw gewenste datum." required><br>
+                <input type="hidden" name="nocsrf" value="<?php echo $_SESSION['token']?>">
+                <input type="submit" name="submit" value="Sturen" id="submit">
+            </form>      
+            </div>
+            <div id="rechtsform"> 
+                <div id="kalender">
+                    <div id="maandenjaar">
+                        <p id="formr" onclick="maandselector(this.id)">&#10095;</p>
+                        <p id="forml" onclick="maandselector(this.id)">&#10094;</p>
+                        <p id='maand'></p><p id='jaar'></p>
+                    </div>
+                    <div id="topdagen" class='Maandag'><p>Ma</p></div>
+                    <div id="topdagen" class='Dinsdag'><p>Di</p></div>
+                    <div id="topdagen" class='Woensdag'><p>Wo</p></div>
+                    <div id="topdagen" class='Donderdag'><p>Do</p></div>
+                    <div id="topdagen" class='Vrijdag'><p>Vr</p></div>
+                </div>
+            </div>
+        </article>
+        <article id="home" class="open">
+            <br>
+            <h1>Home pagina</h1>
+            <p>Persoonlijk vind ik back-end fijner. Alles wat je hier ziet is zelf gecodeerd in HTML, CSS, JavaScript, PHP en SQL. Jammergenoeg werken PHP en SQL niet op Github<br>
+                op Deze site die je ziet is er vooral HTML, CSS en JavaScript te vinden. Er is een heel klein beetje PHP aanwezig in de login pagina gedeelte.<br>
+                Alle belangrijkere paginas kan ik u laten zien in een solicitatie gesprek.</p>
+        </article>
+    </body>
+</html>
+<script src="js/tabbladen.js" ></script>
+<script src="js/kalender.js" async></script>

@@ -1,0 +1,48 @@
+@media all and (max-height: 480px) {
+    header, header h2, div#BG, div#BG img, div.KleurOpBG{
+        height:0;
+        width:0;
+        font-size:0;
+    }
+    #overons.open, #portfolio.open, #contact.open, #vacature.open{
+        overflow:auto;
+        padding-bottom:20px;
+    }
+    /* Animaties */
+    .open{
+        height:100%;
+        padding-top:60px;
+        z-index:-2;
+    }
+    .weg{
+        height:0;
+        padding-top:0;
+        z-index:-8
+    }
+    #home.open{
+        margin-top:0;
+        padding-top:0;
+        height:0;
+    }
+    #home.weg{
+        top:-240px;
+        padding-top:0;
+        height:0;
+    }
+    @keyframes open{
+        0% {height:0;padding-top:0;}
+        100% {height:100%;padding-top:60px;}
+    }
+    @-webkit-keyframes open{
+        0% {height:0;padding-top:0;}
+        100% {height:100%;padding-top:60px;}
+    }
+    @keyframes weg{
+        0% {height:100%;padding-top:60px;}
+        100% {height:0;padding-top:0;}
+    }
+    @-webkit-keyframes weg{
+        0% {height:100%;padding-top:60px;}
+        100% {height:0;padding-top:0;}
+    }
+}

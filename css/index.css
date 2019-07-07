@@ -1,0 +1,457 @@
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+    font-family:'arial';
+}
+body{
+    display:inline;
+}
+html, body{
+    overflow:hidden;
+    text-align:center;
+}
+/* Header */
+header{
+    z-index:16;
+    position:relative;
+}
+header h2{
+    font-size:128px;
+    height:160px;
+    color:white;
+    position:relative;
+    z-index:6;
+    text-shadow:0 0 1px white;
+    transition:600ms;
+}
+header h2:hover{
+    transition:600ms;
+    font-size:130px;
+    text-shadow:0 0 8px white;
+}
+div#BG{
+    z-index:4;
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+}
+div#BG img{
+    left:0;
+    object-fit:cover;
+    height:160px;
+    width:100%;
+    position:absolute;
+    filter:saturate(0.4);
+    z-index:4;
+}
+div.KleurOpBG{
+    opacity:.6;
+    position:absolute;
+    background-color:#555;
+    z-index:5;
+    width:100%;
+    height:160px;
+}
+/* eind Header */
+/* Nav */
+#hamburger{
+    display:none;
+}
+#navbgklein{
+    width:0;
+    height:0;
+}
+nav{
+    position:relative;
+    z-index:15;
+    display:block;
+    background-color:#45d002;
+    width:100%;
+    border-radius:0 0 40px 40px;
+    box-shadow:0 0 50px rgb(0, 0, 0, 0.3);
+}
+div#centerednav p, div#centerednav a{
+    display:inline-block;
+    font-size:20px;
+    margin:6px 15px;
+    color:#fff;
+    cursor:pointer;
+    text-decoration:none;
+    text-shadow:0 0 1px #fff;
+    transition:0.5s;
+}
+div#centerednav p:hover, div#centerednav a:hover{
+    text-shadow:0 0 5px #fff;
+    transition:0.5s;
+}
+/* eind Nav */
+/* Home */
+#home{
+    z-index:-5;
+    width:100%;
+}
+#home h2{
+    padding-top:50px;
+    z-index:-5;
+    position:relative;
+    font-size:24px;
+}
+#home h1{
+    z-index:-5;
+    position:relative;
+    font-size:32px;
+}
+#buttonshome a p{
+    color:#fff;
+    background-color:#45d002; /*#ff2052 */
+    font-size:20px;
+    font-weight:bold;
+    padding:12px;
+    width:200px;
+    display:block;
+    margin:8px auto;
+    border:1px solid black;
+    border-radius:6px; 
+}
+#buttonshome a:hover{
+    cursor:pointer;
+    transition:0.2s;
+    text-shadow:0px 0px 10px #fff;
+}
+/* eind Home */
+#login, #werkendekalender, #anders{
+    background-color:#fff;
+    position:absolute;
+    overflow:hidden;
+    width:100%;
+    left:0;
+    top:0;
+}
+#login.open, #werkendekalender.open, #anders.open{
+    overflow:hidden;
+    padding-bottom:20px;
+}
+#login h1, #werkendekalender h1, #anders h1{
+    font-size:32px;
+    margin-top:0px;
+    padding-bottom:20px;
+}
+/* Vacature */
+div#maandenjaar{
+    width:100%;
+    border-bottom:1px solid black;
+    height:50px;
+    padding-top:10px;
+    font-size:24px;
+    font-weight:bold;
+    background-color:#45d002;
+}
+div#maandenjaar p{
+    display:inline-block;
+    padding:0 5px;
+}
+div#kalender{
+    border-radius:5px;
+    margin:0 2%;
+    float:right;
+    display:block;
+    position:relative;
+    width:360px;
+    height:360px;
+    background-color:#666;
+    border:2px solid black;
+}
+div#topdagen,div#top{
+    width:64px;
+    height:30px;
+    border:1px solid #666;
+    position:absolute;
+    display:inline-block;
+}
+div#topdagen{
+    background-color:#959595;
+}
+div#top{
+    height:40px;
+    margin-top:2px;
+}
+#value, #value1{
+    font-size:16px;
+    border:0px;
+    cursor:context-menu;
+    pointer-events:none;
+    width:240px;
+    font-weight:bold;
+}
+div#top p,div#topdagen p{
+    margin-top:3px;
+    font-size:14px;
+    font-weight: bold;
+    color:white;
+}
+.Maandag{
+    left:0;
+}
+.Dinsdag{
+    left:73px;
+}
+.Woensdag{
+    left:146px;
+}
+.Donderdag{
+    Right:73px;
+}
+.Vrijdag{
+    right:0;
+}
+#formtekst{
+    font-weight:bold;
+}
+#forml, #formr{
+    top:7px;
+    position:absolute;
+    cursor:pointer;
+    border-radius:0 5px 5px 0;
+    color:#fff;
+    background-color:#555;
+    font-weight:bold;
+    opacity:.6;
+    padding:4px;
+    transition:0.4s;
+}
+#forml{
+    left:0;
+}
+#formr{
+    border-radius:5px 0 0 5px;
+    right:0;
+}
+#formr:hover, p#forml:hover{
+    background-color:#222;
+    opacity:.8;
+    transition:0.4s;
+}
+div#divvraag{
+    background-color:#999;
+    border-radius:5px;
+    border:1px solid #333;
+    overflow:hidden;
+    position:absolute;
+    display:block;
+    z-index:5;
+    box-shadow:2px 2px 5px #666;
+    margin-left:36%;
+    padding:2px;
+}
+article#vacature{
+    position:absolute;
+    display:block;
+    margin:0 auto;
+}
+div#centeredform{
+    width:50%;
+    float:right;
+    position:relative;
+    text-align:left;
+}
+form input{
+    border:0;
+    border-bottom:1px solid black;
+    border-left:1px solid black;
+    margin-bottom:10px;
+    font-size:15px;
+}
+div#rechtsform{
+    width:50%;
+    float:left;
+}
+#submit{
+    border:0;
+    border-radius:5px;
+    padding:8px 16px;
+    background-color:#ee275c;
+    font-size:20px;
+    transition:0.2s ease-out;
+    cursor:pointer;
+}
+#submit:hover{
+    padding:8px 20px;
+    transition:0.5s ease-in-out;
+}
+/* eind Vacature */
+/* Contact */
+#contact p{
+    font-size:20px;
+    margin-top:10px;
+}
+/* eind Contact */
+/* Animaties */
+.open{
+    animation-name:open;
+    animation-duration:1.2s;
+    transition-timing-function: ease-in;
+    -webkit-animation-name:open;
+    -webkit-animation-duration:1.2s;
+    -webkit-transition-timing-function: ease-in;
+    height:100%;
+    padding-top:240px;
+    z-index:-2;
+}
+.weg{
+    animation-name:weg;
+    animation-duration:1.2s;
+    transition-timing-function: ease-out;
+    -webkit-animation-name:weg;
+    -webkit-animation-duration:1.2s;
+    -webkit-transition-timing-function: ease-out;
+    height:0;
+    padding-top:0;
+    z-index:-8
+}
+#home.open{
+    animation-name:openhome;
+    animation-duration:1.5s;
+    transition-timing-function: ease-in;
+    -webkit-animation-name:openhome;
+    -webkit-animation-duration:1.5s;
+    -webkit-transition-timing-function: ease-in;
+    margin-top:0;
+    padding-top:0;
+    height:100%;
+    z-index:-5
+}
+#home.weg{
+    animation-name:weghome;
+    animation-duration:1.5s;
+    transition-timing-function: ease-in;
+    -webkit-animation-name:weghome;
+    -webkit-animation-duration:1.5s;
+    -webkit-transition-timing-function: ease-in;
+    margin-top:-280px;
+    padding-top:0;
+    height:0;
+    z-index:-8
+}
+.openvraagdiv{
+    animation-name:openvraagdiv;
+    animation-duration:.5s;
+    transition-timing-function: ease-in;
+    -webkit-animation-name:openvraagdiv;
+    -webkit-animation-duration:.5s;
+    -webkit-transition-timing-function: ease-in;
+    opacity:1;
+    width:200px;
+    height:100px;
+}
+.sluitvraagdiv{
+    animation-name:sluitvraagdiv;
+    animation-duration:.5s;
+    transition-timing-function: ease-out;
+    -webkit-animation-name:sluitvraagdiv;
+    -webkit-animation-duration:.5s;
+    -webkit-transition-timing-function: ease-out;
+    opacity:0;
+    width:0;
+    height:0;
+}
+@keyframes openvraagdiv{
+    0% {width:0;height:0;opacity:0;};
+    100% {width:200px;height:100px;opacity:1;}
+}
+@-webkit-keyframes openvraagdiv{
+    0% {width:0;height:0;opacity:0;};
+    100% {width:200px;height:100px;opacity:1};
+}
+@keyframes sluitvraagdiv{
+    0% {width:200px;height:100px;opacity:1};
+    100% {width:0;height:0;opacity:0;};
+}
+@-webkit-keyframes sluitvraagdiv{
+    0% {width:200px;height:100px;opacity:1};
+    100% {width:0;height:0;opacity:0;};
+}
+
+@keyframes openhome{
+    0% {height:0;margin-top:-280px;}
+    100% {height:100%;margin-top:0;}
+}
+@-webkit-keyframes openhome{
+    0% {height:0;margin-top:-280px;}
+    100% {height:100%;margin-top:0;}
+}
+
+@keyframes weghome{
+    0% {height:100%;margin-top:0;}
+    100% {height:0;margin-top:-280px;}
+}
+@-webkit-keyframes weghome{
+    0% {height:100%;margin-top:0;}
+    100% {height:0;margin-top:-280px;}
+}
+
+@keyframes open{
+    0% {height:0;padding-top:0;}
+    100% {height:100%;padding-top:240px;}
+}
+@-webkit-keyframes open{
+    0% {height:0;padding-top:0;}
+    100% {height:100%;padding-top:240px;}
+}
+
+@keyframes weg{
+    0% {height:100%;padding-top:240px;}
+    100% {height:0;padding-top:0;}
+}
+@-webkit-keyframes weg{
+    0% {height:100%;padding-top:240px;}
+    100% {height:0;padding-top:0;}
+}
+
+
+@keyframes fg{
+    0% {opacity:1.0; height:100%; width:100%;}
+    20% {opacity:1.0;}
+    99% {width:100%; height:100%;}
+    100% {opacity:0.0; width:0%; height:0%;}
+}
+@-webkit-keyframes fg{
+    0% {opacity:1.0; height:100%; width:100%;}
+    20% {opacity:1.0;}
+    99% {width:100%; height:100%;}
+    100% {opacity:0.0; width:0%; height:0%;}
+}
+div.foreground{
+    background-color:#fff;
+    position:absolute;
+    z-index:100;
+    width:0%;
+    height:0%;
+    top:0;
+    left:0;
+    opacity:0;
+    animation-name:fg;
+    animation-duration:1.2s;
+    transition-timing-function: ease-in;
+    -webkit-animation-name:fg;
+    -webkit-animation-duration:1.2s;
+    -webkit-transition-timing-function: ease-in;
+}
+@keyframes tekstfade{
+    0% {opacity:0}
+    100% {opacity:1}
+}
+@-webkit-keyframes tekstfade{
+    0% {opacity:0}
+    100% {opacity:1}
+}
+header h2{
+    opacity:1;
+    animation-name:tekstfade;
+    -webkit-animation-name:tekstfade;
+    animation-duration:2.0s;
+    -webkit-animation-duration:2.0s;
+    transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+}
